@@ -2,16 +2,16 @@ import { validateEmail } from "../../utils/validate.email"
 import { AnnounceAppErrorEntity } from "../errors/application.error"
 
 export class EnterpriseEntity{
-    private company!:enterprise & {id:string,subscriptionType:string}
+    private company!:enterprise & {enterpriseId:string,subscriptionType:string,enterpriseOperationState:"active"|"inactive",RequestPerMonth:number}
 
     constructor(props:enterprise){
 
-        if(!validateEmail(props.companyEmail)){
+        if(!validateEmail(props.companyEmail) || !props.companyNif){
             throw new AnnounceAppErrorEntity({name:"Invalid Enterprise data",description:"unable to register the enterprise, invalid data",page:"company Entity"})
         }
 
-        const id = ""
-        this.company={...props,id,subscriptionType:"free"}
+        const enterpriseId = crypto.randomUUID().toString()
+        this.company={...props,enterpriseId,subscriptionType:"free",enterpriseOperationState:"inactive",RequestPerMonth:45}
     }
 
     get companyData(){

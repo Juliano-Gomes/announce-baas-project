@@ -10,7 +10,7 @@ class SubscriberEntity{
         if(validateEmail(props.email)){
             throw new AnnounceAppErrorEntity({name:"Invalid subscriber data",description:"the data provided is not valid , please provide the correct ones",page:"subscriberEntity"})
         }
-        const id = ""
+        const id = crypto.randomUUID().toString()
         this.SubscriberInformation = {...props,id}
     }
 

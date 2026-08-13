@@ -9,3 +9,26 @@ type CompanyInvitation = {
     companyInvitationCode:string,
     CompanyId:string
 }
+
+export type announce={
+    enterprise:{
+        enterpriseId:string,
+        enterpriseEmail:string,
+        RequestPerMonth:number,
+    },
+    announceTitle:string,
+    announce_has_images:boolean,
+    announce_body:string
+}
+
+export type announce_verifier={
+    enterprise:{
+        enterpriseId:string,
+        enterpriseEmail:string,
+        RequestPerMonth:number,
+        subscriptionType:string
+    },
+    announceTitle:string,
+    announce_has_images:boolean,
+    announce_body:string
+}
