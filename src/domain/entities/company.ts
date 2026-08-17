@@ -21,6 +21,34 @@ export class EnterpriseEntity{
     }
 }
 
+
+export class EnterpriseSubscriptionExpiration{
+    private enterprise_subscription!:enterprise_subscription_type
+    constructor(props:enterprise_subscription_type){
+        if(props.subscriptionExpirationDate.getMonth() >= new Date().getMonth() && props.subscriptionExpirationDate.getDate() > new Date().getDate()){
+            this.enterprise_subscription = props
+        }
+
+        this.enterprise_subscription={
+            enterpriseId:props.enterpriseId,
+            enterpriseEmail:props.enterpriseEmail,
+            subscriptionExpirationDate:new Date(),
+            subscriptionType:"free"
+        }
+    }
+
+    get subscription(){
+        return this.enterprise_subscription
+    }
+}
+
+type enterprise_subscription_type={
+    enterpriseId:string,
+    enterpriseEmail:string,
+    subscriptionExpirationDate:Date,
+    subscriptionType:"free" | "premium" | "medium"
+}
+
 type enterprise={
     companyName:string,
     companyEmail:string,

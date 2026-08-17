@@ -11,6 +11,9 @@ export class AnnounciabilityEntity{
         if(props.enterprise.subscriptionType.toLowerCase() === "free" && props.announce_has_images){
             throw new AnnounceAppErrorEntity({name:"Free tear can't send images",description:"In free tear images are not allowed",page:"announciabilityEntity"})
         }
+        if(props.enterprise.enterpriseOperationState === "inactive" ){
+            throw new AnnounceAppErrorEntity({name:"Account Activation issue",description:"Verify your email to activate your account or request an activation link",page:"announciabilityEntity"})
+        }
 
         this.announce = {
             announce_body:props.announce_body,

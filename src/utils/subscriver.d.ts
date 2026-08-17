@@ -26,7 +26,8 @@ export type announce_verifier={
         enterpriseId:string,
         enterpriseEmail:string,
         RequestPerMonth:number,
-        subscriptionType:string
+        subscriptionType:string,
+        enterpriseOperationState:"active"|"inactive"
     },
     announceTitle:string,
     announce_has_images:boolean,
